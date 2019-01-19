@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jan 17 18:52:27 2019
+
+@author: anthonyplumb
+"""
+
+"""
+Anthony Plumb 
+Lab 01
+01/18/2019
+"""
+
+from random import random
+import numpy as np
+import matplotlib.pyplot as plt
+
+step_size=3
+n_timesteps=1000
+
+
+
+X=np.empty(n_timesteps)
+Y=np.empty(n_timesteps)
+
+X[0]=0
+Y[0]=0
+
+n=0
+
+
+def coord(step_size):
+    """
+    This function will return +step_size
+    50% of the time and -step_size 50%
+    of the time
+    """
+    r=random()
+    if r>0.5:
+        step_size=step_size
+        return step_size
+            
+    else:
+        step_size=-step_size
+        return step_size
+            
+for n in range(1,n_timesteps):
+    coord(step_size)
+    X[n]=X[n-1]+coord(step_size)
+    Y[n]=Y[n-1]+coord(step_size)
+    
+    
+print(X)
+print(Y)
+
+Mx=np.max(np.absolute(X))
+My=np.max(np.absolute(Y))
+    
+plt.xlim(-Mx, Mx)
+plt.ylim(-My, My)
+
+
+plt.plot(X,Y, 'r-')
+plt.plot(X[-1],Y[-1],'bo')
+plt.show()
+
+
+
+
+
+
+
+
+"""
+1.
+    You can confirm that it starts at the origin
+    by looking at the first value of array X and Y
+    
+2.
+    Yes it looks as expected, there are no points that
+    change drastically
+
+3. 
+    You can change an individual point usint the edit
+
+4.
+    Scolling down the edit window and looking at the 49th 
+    box y=-15
+    
+5.
+    Scolling down the edit window and looking at the 49th 
+    box double clicking the box and changing y=-12
+        
+"""
+    
+
+
+
+    
